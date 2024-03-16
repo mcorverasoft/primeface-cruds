@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="jakarta.faces.facelets"
+                template="/template/template.xhtml">
+
+    <ui:define name="container">
+        <h1 class="my-5">BLOG AND READER CRUD!</h1>
+        <p:ajaxStatus onstart="PF('statusDialog').show()"
+                      onsuccess="PF('statusDialog').hide()" />
+
+        <p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+                  closable="false" resizable="false" showHeader="false">
+            <p:graphicImage name="images/ajaxloadingbar.gif" />
+        </p:dialog>
+
+        <h:form id="form_record">
+
+            <p:messages id="messages" showDetail="true" closable="true">
+                <p:autoUpdate />
+            </p:messages>
+
+            <p:inputText type="hidden" value="#{blogReaderController.blogReader.id}" />
+            <p:panelGrid columns="2">
+                <p:column>
+                    <p:outputLabel value="Name" />
+                </p:column>
+                <p:column>
+                    <p:inputText value="#{blogReaderController.blogReader.name}" label="Name" required="true" autocomplete="off">
+                        <f:validateLength minimum="4"/>
+                    </p:inputText>
+                </p:column>   
+
+                <p:column>
+                    <p:outputLabel value="Blog" />
+                </p:column>
+                <p:selectOneMenu value="#{blogReaderController.blogReader.blogId}">
+                    <f:selectItem itemLabel="Seleccione un blog" itemValue="" />
+                    <f:selectItems value="#{blogReaderController.blogs}" var="blog" itemValue="#{blog.id}" itemLabel="#{blog.title}" />
+                </p:selectOneMenu>
+
+                <p:column>
+                    <p:outputLabel value="Reader" />
+                </p:column>
+                <p:selectOneMenu value="#{blogReaderController.blogReader.readerId}">
+                    <f:selectItem itemLabel="Seleccione un blog" itemValue="" />
+                    <f:selectItems value="#{blogReaderController.readers}" var="reader" itemValue="#{reader.id}" itemLabel="#{reader.name}" />
+                </p:selectOneMenu>
+
+                <p:column>
+                    <p:outputLabel value="User" />
+                </p:column>
+                <p:selectOneMenu value="#{blogReaderController.blogReader.userId}">
+                    <f:selectItem itemLabel="Seleccione un blog" itemValue="" />
+                    <f:selectItems value="#{blogReaderController.users}" var="user" itemValue="#{user.id}" itemLabel="#{user.code}" />
+                </p:selectOneMenu>
+
+                <p:column>
+                    <p:commandButton 
+                        value="New" 
+                        update="form_record"
+                        action="#{blogReaderController.newRecord}" 
+                        process="@this"/>
+                </p:column>
+                <p:column>
+                    <p:commandButton 
+                        value="Save" 
+                        label="Save"
+                        update="form_record"
+                        action="#{blogReaderController.save}" />
+                </p:column>
+            </p:panelGrid>
+
+
+            <p:dataTable id="table_records" var="blogReader" value="#{blogReaderController.blogReaders}" rows="10" paginator="true" 
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15">
+                <p:column headerText="Id">
+                    <h:outputText value="#{blogReader.id}"/>
+                </p:column>
+
+                <p:column headerText="Blog-Reader Name">
+                    <h:outputText value="#{blogReader.name}" />
+                </p:column>
+
+                <p:column headerText="Reader Name">
+                    <h:outputText value="#{blogReader.readerName}" />
+                </p:column>
+                <p:column headerText="Blog Title">
+                    <h:outputText value="#{blogReader.title}" />
+                </p:column>
+                <p:column headerText="Owner">
+                    <h:outputText value="#{blogReader.code}" />
+                </p:column>
+                <p:column headerText="Actions">
+                    <p:commandButton title="Edit" value="Edit"
+                                     update="form_record"
+                                     process="@this"
+                                     actionListener="#{blogReaderController.edit(blogReader)}">
+                        <f:setPropertyActionListener target="#{blogReaderController.blogReader}" value="#{blogReader}" />
+                    </p:commandButton>
+
+                    <p:commandButton 
+                        action="#{blogReaderController.remove}" 
+                        update="form_record"
+
+                        value="Delete"
+                        immediate="true"
+                        styleClass="mx-3"
+                        >
+                        <f:setPropertyActionListener target="#{blogReaderController.blogReader}"
+                                                     value="#{blogReader}" />
+                        <p:confirm header="Confirmation" message="Are you sure?"
+                                   icon="ui-icon-alert" />
+                    </p:commandButton>
+
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <p:commandButton value="Yes" type="button"
+                                         styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                        <p:commandButton value="No" type="button"
+                                         styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </p:confirmDialog>
+                </p:column>
+            </p:dataTable>
+
+        </h:form>
+    </ui:define>
+</ui:composition>

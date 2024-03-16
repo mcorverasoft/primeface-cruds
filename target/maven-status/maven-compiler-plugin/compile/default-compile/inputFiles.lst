@@ -1,0 +1,17 @@
+/Users/miltoncorvera/NetBeansProjects/blogs/src/main/java/com/mcorvera/vlogs/JakartaRestConfiguration.java
+/Users/miltoncorvera/NetBeansProjects/blogs/src/main/java/com/mcorvera/vlogs/ejb/RepositoryFacade.java
+/Users/miltoncorvera/NetBeansProjects/blogs/src/main/java/com/mcorvera/vlogs/ejb/BlogReaderFacade.java
+/Users/miltoncorvera/NetBeansProjects/blogs/src/main/java/com/mcorvera/vlogs/model/Blog.java
+/Users/miltoncorvera/NetBeansProjects/blogs/src/main/java/com/mcorvera/vlogs/model/BlogReader.java
+/Users/miltoncorvera/NetBeansProjects/blogs/src/main/java/com/mcorvera/vlogs/model/Reader.java
+/Users/miltoncorvera/NetBeansProjects/blogs/src/main/java/com/mcorvera/vlogs/ejb/BlogFacade.java
+/Users/miltoncorvera/NetBeansProjects/blogs/src/main/java/com/mcorvera/vlogs/ejb/AbstractFacade.java
+/Users/miltoncorvera/NetBeansProjects/blogs/src/main/java/com/mcorvera/vlogs/controllers/ReaderController.java
+/Users/miltoncorvera/NetBeansProjects/blogs/src/main/java/com/mcorvera/vlogs/controllers/BlogReaderController.java
+/Users/miltoncorvera/NetBeansProjects/blogs/src/main/java/com/mcorvera/vlogs/model/User.java
+/Users/miltoncorvera/NetBeansProjects/blogs/src/main/java/com/mcorvera/vlogs/controllers/BlogController.java
+/Users/miltoncorvera/NetBeansProjects/blogs/src/main/java/com/mcorvera/vlogs/ejb/UserFacade.java
+/Users/miltoncorvera/NetBeansProjects/blogs/src/main/java/com/mcorvera/vlogs/controllers/LoginController.java
+/Users/miltoncorvera/NetBeansProjects/blogs/src/main/java/com/mcorvera/vlogs/ejb/ReaderFacade.java
+/Users/miltoncorvera/NetBeansProjects/blogs/src/main/java/com/mcorvera/vlogs/resources/JakartaEE10Resource.java
+/Users/miltoncorvera/NetBeansProjects/blogs/src/main/java/com/mcorvera/vlogs/beans/BlogReaderDetail.java

@@ -1,0 +1,17 @@
+com/mcorvera/vlogs/controllers/LoginController.class
+com/mcorvera/vlogs/ejb/BlogReaderFacade.class
+com/mcorvera/vlogs/ejb/ReaderFacade.class
+com/mcorvera/vlogs/beans/BlogReaderDetail.class
+com/mcorvera/vlogs/ejb/RepositoryFacade.class
+com/mcorvera/vlogs/model/Reader.class
+com/mcorvera/vlogs/controllers/BlogReaderController.class
+com/mcorvera/vlogs/ejb/BlogFacade.class
+com/mcorvera/vlogs/model/User.class
+com/mcorvera/vlogs/resources/JakartaEE10Resource.class
+com/mcorvera/vlogs/model/Blog.class
+com/mcorvera/vlogs/controllers/BlogController.class
+com/mcorvera/vlogs/ejb/UserFacade.class
+com/mcorvera/vlogs/ejb/AbstractFacade.class
+com/mcorvera/vlogs/controllers/ReaderController.class
+com/mcorvera/vlogs/model/BlogReader.class
+com/mcorvera/vlogs/JakartaRestConfiguration.class

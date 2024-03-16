@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Blogs - Login</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"/>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <style>
+            .form-floating>label {
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 2;
+                height: 100%;
+                padding: 1rem 0.75rem;
+                overflow: hidden;
+                text-align: start;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                pointer-events: none;
+                border: var(--bs-border-width) solid transparent;
+                transform-origin: 0 0;
+                transition: opacity .1s ease-in-out, transform .1s ease-in-out;
+            }
+            
+            .form-signin {
+                max-width: 330px;
+                padding: 1rem;
+            }
+           
+        </style>
+    </h:head>
+    <h:body class="d-flex align-items-center py-4 bg-body-tertiary">
+
+
+        <main class="form-signin w-100 m-auto">
+            <h:form id="frmLogin">
+                <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+
+                <p:panel style="border: none;">
+
+                    <p:messages showIcon="true" showDetail="true"/>
+                    <p:panelGrid columns="1" styleClass="grid-login">
+                        <div class="form-floating">
+                            <p:inputText value="#{loginController.codeOrEmail}" label="Login" id="codeOrEmail" rendered="true" class="form-control" placeholder="User or Email">
+                                <label for="codeOrEmail">Email address</label>
+                                <f:validateLength minimum="4"/>
+                            </p:inputText>
+                        </div>
+
+                        <div class="form-floating">
+                            <p:password value="#{loginController.password}" label="Password" id="password" rendered="true" autocomplete="off" required="true" class="form-control" placeholder="Password">
+                                <label for="password">Password</label>
+                                <f:validateLength minimum="4"/>
+                            </p:password>
+                        </div>
+
+                        <p:commandButton action="#{loginController.login}" value="Entrar" ajax="false" icon="ui-icon-star"/>
+                    </p:panelGrid>    
+                </p:panel>
+
+            </h:form>
+        </main>
+    </h:body>
+</html>
