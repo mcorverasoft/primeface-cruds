@@ -1,18 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mcorvera.vlogs.controllers;
 
 import com.mcorvera.vlogs.ejb.ReaderFacade;
-import com.mcorvera.vlogs.ejb.RepositoryFacade;
 import com.mcorvera.vlogs.model.Reader;
 import jakarta.annotation.PostConstruct;
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
-import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,8 +50,8 @@ public class ReaderController {
     
     public void remove(){
         try{
-            this.loadRecords();
             readerRepository.remove(reader);
+            this.loadRecords();
             this.reader.reset();
             this.showMessage("Record deleted");
         }catch(Exception e){

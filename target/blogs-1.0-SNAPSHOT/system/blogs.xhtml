@@ -72,12 +72,12 @@
                  <p:column headerText="Description">
                     <h:outputText value="#{blog.description}" />
                 </p:column>
-                <p:column headerText="Actions">
+                <p:column headerText="Actions" width="200px">
                     <p:commandButton 
                         title="Edit" 
                         value="Edit "
                         update="form_record"
-                        
+                        style="width: 80px"
                         process="@this">
                         <f:setPropertyActionListener target="#{blogController.blog}" value="#{blog}" />
                     </p:commandButton>
@@ -85,7 +85,7 @@
                     <p:commandButton 
                         action="#{blogController.remove}" 
                         update="form_record"
-                        
+                        style="width: 80px"
                         value="Delete"
                         immediate="true"
                         styleClass="mx-3"

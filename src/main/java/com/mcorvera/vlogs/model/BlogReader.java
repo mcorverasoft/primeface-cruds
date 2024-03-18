@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mcorvera.vlogs.model;
 
 import jakarta.persistence.Column;
@@ -48,15 +44,15 @@ public class BlogReader {
      
    
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "r_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "r_id", referencedColumnName = "id", insertable = false, updatable = true)
     private Reader reader;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "b_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "b_id", referencedColumnName = "id", insertable = false, updatable = true)
     private Blog blog;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "u_id", referencedColumnName = "id", insertable = false, updatable = false)
+    @JoinColumn(name = "u_id", referencedColumnName = "id", insertable = false, updatable = true)
     private User user;
 
     public BlogReader reset() {

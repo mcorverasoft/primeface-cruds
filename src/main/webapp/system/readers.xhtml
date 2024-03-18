@@ -58,12 +58,12 @@
                 <p:column headerText="Name">
                     <h:outputText value="#{reader.name}" />
                 </p:column>
-                <p:column headerText="Actions">
+                <p:column headerText="Actions" width="200px">
                     <p:commandButton 
                         title="Edit" 
                         value="Edit "
                         update="form_record"
-                        
+                        style="width:80px"
                         process="@this">
                         <f:setPropertyActionListener target="#{readerController.reader}"
                                                      value="#{reader}" />
@@ -71,7 +71,7 @@
                     <p:commandButton 
                         action="#{readerController.remove}" 
                         update="form_record"
-                        
+                        style="width:80px"
                         value="Delete"
                         immediate="true"
                         styleClass="mx-3"

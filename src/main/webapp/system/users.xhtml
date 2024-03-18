@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="jakarta.faces.facelets"
+                template="/template/template.xhtml">
+
+    <ui:define name="container">
+        <div style="text-align: center; width: 100%">
+        <h1 class="my-5">USER CRUD</h1>
+        </div>
+        <p:ajaxStatus onstart="PF('statusDialog').show()"
+		onsuccess="PF('statusDialog').hide()" />
+
+	<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+		closable="false" resizable="false" showHeader="false">
+		<p:graphicImage name="images/ajaxloadingbar.gif" />
+	</p:dialog>
+
+        <h:form id="form_record">
+
+            <p:messages id="messages" showDetail="true" closable="true">
+                <p:autoUpdate />
+            </p:messages>
+
+            <p:inputText type="hidden" value="#{userController.user.id}" />
+            <p:panelGrid columns="2">
+                <p:column>
+                    <p:outputLabel value="Name" />
+                </p:column>
+                <p:column>
+                    <p:inputText value="#{userController.user.name}" label="Name" required="true" autocomplete="off">
+                         <f:validateLength minimum="4"/>
+                    </p:inputText>
+                </p:column>   
+                <p:column>
+                    <p:outputLabel value="Code" />
+                </p:column>
+                <p:column>
+                    <p:inputText value="#{userController.user.code}" label="Code" required="true" autocomplete="off">
+                         <f:validateLength minimum="4"/>
+                    </p:inputText>
+                </p:column>   
+                <p:column>
+                    <p:outputLabel value="Email" />
+                </p:column>
+                <p:column>
+                    <p:inputText value="#{userController.user.email}" label="Email" required="true" autocomplete="off">
+                         <f:validateLength minimum="4"/>
+                    </p:inputText>
+                </p:column>  
+                <p:column>
+                    <p:outputLabel value="Password" />
+                </p:column>
+                <p:column>
+                    <p:password value="#{userController.user.password}" label="Password" required="true" autocomplete="off">
+                         <f:validateLength minimum="8"/>
+                    </p:password>
+                </p:column>  
+                <p:column>
+                    <p:commandButton 
+                        value="New" 
+                        update="form_record"
+                        action="#{userController.newRecord}" 
+                        process="@this"/>
+                </p:column>
+                <p:column>
+                    <p:commandButton 
+                        value="Save" 
+                        label="Save"
+                        update="form_record"
+                        action="#{userController.save}" />
+                </p:column>
+            </p:panelGrid>
+
+            <p:dataTable id="table_records" var="user" value="#{userController.users}" rows="10" paginator="true" 
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15">
+                <p:column headerText="Id">
+                    <h:outputText value="#{user.id}" />
+                </p:column>
+                <p:column headerText="Name">
+                    <h:outputText value="#{user.name}" />
+                </p:column>
+                <p:column headerText="Code">
+                    <h:outputText value="#{user.code}" />
+                </p:column>
+                <p:column headerText="Email">
+                    <h:outputText value="#{user.email}" />
+                </p:column>
+                <p:column headerText="Password">
+                   <h:outputText value="#{user.password}" style="display: none;" />
+                    <h:outputText id="maskedPassword" value="******" />
+                    <p:remoteCommand name="maskPassword" update="maskedPassword" process="@this" />
+                    <p:commandButton style="display: none;" onclick="maskPassword()" />
+                </p:column>
+                <p:column headerText="Active">
+                    <h:outputText value="#{user.isActive}"/>
+                </p:column>
+                <p:column headerText="Actions" width="200px">
+                    <p:commandButton 
+                        title="Edit" 
+                        value="Edit "
+                        update="form_record"
+                        style="width:80px"
+                        process="@this">
+                        <f:setPropertyActionListener target="#{userController.user}"
+                                                     value="#{user}" />
+                    </p:commandButton>
+                    <p:commandButton 
+                        action="#{userController.remove}" 
+                        update="form_record"
+                        
+                        value="Delete"
+                        immediate="true"
+                        styleClass="mx-3"
+                        >
+                        <f:setPropertyActionListener target="#{userController.user}"
+                                                     value="#{user}" />
+                        <p:confirm header="Confirmation" message="Are you sure?"
+                                   icon="ui-icon-alert" />
+                    </p:commandButton>
+
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <p:commandButton value="Yes" type="button"
+                                         styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                        <p:commandButton value="No" type="button"
+                                         styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </p:confirmDialog>
+                </p:column>
+            </p:dataTable>
+
+        </h:form>
+        <script>
+            function maskPassword() {
+            var passwordElements = document.querySelectorAll('.password-original');
+            passwordElements.forEach(function(element) {
+                element.style.display = 'none';
+            });
+
+            var maskedPasswordElements = document.querySelectorAll('.password-masked');
+            maskedPasswordElements.forEach(function(element) {
+                element.style.display = 'inline';
+            });
+        }
+        </script>
+    </ui:define>
+</ui:composition>

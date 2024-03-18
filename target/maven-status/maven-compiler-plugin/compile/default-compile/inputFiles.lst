@@ -1,4 +1,5 @@
 /Users/miltoncorvera/NetBeansProjects/blogs/src/main/java/com/mcorvera/vlogs/JakartaRestConfiguration.java
+/Users/miltoncorvera/NetBeansProjects/blogs/src/main/java/com/mcorvera/vlogs/controllers/UserController.java
 /Users/miltoncorvera/NetBeansProjects/blogs/src/main/java/com/mcorvera/vlogs/ejb/RepositoryFacade.java
 /Users/miltoncorvera/NetBeansProjects/blogs/src/main/java/com/mcorvera/vlogs/ejb/BlogReaderFacade.java
 /Users/miltoncorvera/NetBeansProjects/blogs/src/main/java/com/mcorvera/vlogs/model/Blog.java

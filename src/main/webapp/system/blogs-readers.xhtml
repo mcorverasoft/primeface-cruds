@@ -94,18 +94,20 @@
                 <p:column headerText="Owner">
                     <h:outputText value="#{blogReader.code}" />
                 </p:column>
-                <p:column headerText="Actions">
-                    <p:commandButton title="Edit" value="Edit"
-                                     update="form_record"
-                                     process="@this"
-                                     actionListener="#{blogReaderController.edit(blogReader)}">
+                <p:column headerText="Actions" width="200px">
+                    <p:commandButton 
+                        title="Edit" 
+                        value="Edit"
+                        style="width: 80px"
+                        update="form_record"
+                        process="@this"
+                        actionListener="#{blogReaderController.edit(blogReader)}">
                         <f:setPropertyActionListener target="#{blogReaderController.blogReader}" value="#{blogReader}" />
                     </p:commandButton>
 
                     <p:commandButton 
                         action="#{blogReaderController.remove}" 
                         update="form_record"
-
                         value="Delete"
                         immediate="true"
                         styleClass="mx-3"

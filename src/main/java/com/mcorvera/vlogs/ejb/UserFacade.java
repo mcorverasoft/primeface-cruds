@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mcorvera.vlogs.ejb;
 
 /**
@@ -39,4 +35,12 @@ public class UserFacade extends AbstractFacade<User> implements RepositoryFacade
        return user;
         
     }   
+    public User findByUserorEmail(String codeOrEmail){
+        User user=null;
+        Optional optUser = Optional.of( em.createNamedQuery("User.findByCodeOrEmail").setParameter("codeOrEmail", codeOrEmail).getSingleResult());
+        if(optUser.isPresent())
+            user=(User)optUser.get();
+       return user;
+        
+    } 
 }

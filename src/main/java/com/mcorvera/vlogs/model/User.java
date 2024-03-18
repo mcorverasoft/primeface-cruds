@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mcorvera.vlogs.model;
 
 import jakarta.persistence.Column;
@@ -25,9 +21,10 @@ import lombok.NoArgsConstructor;
 @Table(name="users")
 @Data
 @NamedQueries({
-    @NamedQuery(name = "User.findByCodeAndPassword", query = "SELECT u FROM User u WHERE (u.code = :codeOrEmail or u.email = :codeOrEmail) and u.password= :password")
+    @NamedQuery(name = "User.findByCodeAndPassword", query = "SELECT u FROM User u WHERE (u.code = :codeOrEmail or u.email = :codeOrEmail) and u.password= :password"),
+    @NamedQuery(name = "User.findByCodeOrEmail", query = "SELECT u FROM User u WHERE (u.code = :codeOrEmail or u.email = :codeOrEmail)")
 })
-public class User implements Serializable{
+public class User{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -35,6 +32,10 @@ public class User implements Serializable{
     private String email;
     private String password;
     @Column(name = "is_active")
-    private boolean isActive;
+    private Boolean isActive;
+    private String name;
+    public User reset() {
+        return new User();
+    }
     
 }
