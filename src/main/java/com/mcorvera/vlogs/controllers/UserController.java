@@ -74,7 +74,7 @@ public class UserController {
     
     public String logOut(){
         getRequest().getSession().invalidate();
-        return "../login.xhtml?faces-redirect=true";
+        return "/login.xhtml?faces-redirect=true";
     } 
     
     private void showMessage(String msg){

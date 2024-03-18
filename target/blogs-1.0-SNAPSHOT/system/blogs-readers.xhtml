@@ -76,8 +76,8 @@
 
             <p:dataTable id="table_records" var="blogReader" value="#{blogReaderController.blogReaders}" rows="10" paginator="true" 
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                         rowsPerPageTemplate="5,10,15">
-                <p:column headerText="Id">
+                         rowsPerPageTemplate="5,10,15" sortBy="#{blogReader.id}">
+                <p:column headerText="Id" sortBy="#{blogReader.id}">
                     <h:outputText value="#{blogReader.id}"/>
                 </p:column>
 

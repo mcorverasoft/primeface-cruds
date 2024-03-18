@@ -44,15 +44,15 @@ public class BlogReader {
      
    
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "r_id", referencedColumnName = "id", insertable = false, updatable = true)
+    @JoinColumn(name = "r_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Reader reader;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "b_id", referencedColumnName = "id", insertable = false, updatable = true)
+    @JoinColumn(name = "b_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Blog blog;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "u_id", referencedColumnName = "id", insertable = false, updatable = true)
+    @JoinColumn(name = "u_id", referencedColumnName = "id", insertable = false, updatable = false)
     private User user;
 
     public BlogReader reset() {
